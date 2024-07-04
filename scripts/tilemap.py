@@ -5,18 +5,22 @@ PHYSICS_TILES = {'grass', 'stone'}
 
 class Tilemap:
     def __init__(self, game, tile_size=16):
+        # use a game
         self.game = game
+        # tilesize is the size passed in, default of 16
         self.tile_size = tile_size
-        self.tilemap = {}
-        self.offgrid_tiles = []
+        # tilemap is a dictionary
+        self.tilemap = {} # system 1 on a grid, can only handle physics with a grid
+        # offgrid tiles is a list
+        self.offgrid_tiles = [] # all over the place might not line up with a grid
 
-        for i in range(10):
+        for i in range(10): # creates a tilemap to grass or stone
             self.tilemap[str(3+i) + ';10'] = {'type': 'grass', 'variant': 1, 'pos': (3 + i, 10)}
             self.tilemap['10;' + str(i + 5)] = {'type': 'stone', 'variant': 1, 'pos': (10, 5 + i)}
 
     def tiles_around(self, pos):
         tiles = []
-        tile_loc = (int(pos[0] // self.tile_size))
+        tile_loc = (int(pos[0] // self.tile_size), int(pos[1] // self.tile_size))
         for offset in NEIGHBOR_OFFSETS:
             check_loc = str(tile_loc[0] + offset[0]) + ';' + str(tile_loc[1] + offset[1])
             if check_loc in self.tilemap:
