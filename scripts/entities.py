@@ -57,6 +57,9 @@ class PhysicsEntity:
         # gravity
         self.velocity[1] = min(5, self.velocity[1] + 0.1)
 
+        if self.collisions['down'] or self.collisions['up']:
+            self.velocity[1] = 0
+
     # rendering take the surface and use the player where you take the image and the position
-    def render(self, surf):
-        surf.blit(self.game.assets['player'], self.pos)
+    def render(self, surf, offset=(0, 0)):
+        surf.blit(self.game.assets['player'], (self.pos[0] - offset[0], self.pos[1] - offset[1]))
