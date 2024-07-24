@@ -14,10 +14,6 @@ class Tilemap:
         # offgrid tiles is a list
         self.offgrid_tiles = [] # all over the place might not line up with a grid
 
-        for i in range(10): # creates a tilemap to grass or stone
-            self.tilemap[str(3+i) + ';10'] = {'type': 'grass', 'variant': 1, 'pos': (3 + i, 10)}
-            self.tilemap['10;' + str(i + 5)] = {'type': 'stone', 'variant': 1, 'pos': (10, 5 + i)}
-
     def tiles_around(self, pos):
         tiles = []
         tile_loc = (int(pos[0] // self.tile_size), int(pos[1] // self.tile_size))

@@ -23,7 +23,6 @@ class Game:
         # moevment stuff????
         self.movement = [False, False]
 
-
         # loads assets for map
         self.assets = {
             'decor': load_images('tiles/decor'),
