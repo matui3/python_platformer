@@ -29,6 +29,7 @@ class Editor:
             'grass': load_images('tiles/grass'),
             'large_decor': load_images('tiles/large_decor'),
             'stone': load_images('tiles/stone'),
+            'spawners': load_images('tiles/spawners')
         }
 
         # moevment stuff????
@@ -123,7 +124,7 @@ class Editor:
                     if event.button == 1:
                         self.clicking = False
                     if event.button == 3:
-                        self.right_clicking == False
+                        self.right_clicking = False
                     
                 if event.type == pygame.KEYDOWN:
                     if event.key == pygame.K_a:
